@@ -1,4 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import List from './container/List';
 
-ReactDOM.render(<h1>Hola mundo</h1>, document.getElementById('root'));
+ReactDOM.render(<List/>, document.getElementById('root'));
