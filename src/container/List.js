@@ -2,7 +2,9 @@ import React, {Fragment} from "react";
 
 import Card from '../components/Card/Card';
 
-const API = "https://www.omdbapi.com/?i=tt3896198&apikey=83ad705f";
+console.log(process.env.API);
+
+const API = process.env.API;
 
 class List extends React.Component{
 
