@@ -11,7 +11,8 @@ class List extends React.Component{
         this.state = {
             data: [],
             searchTerm: "",
-            error: ""
+            error: "",
+            loading: true
         }
     }
 
@@ -20,7 +21,7 @@ class List extends React.Component{
       const res = await fetch(`${API}&s=batman`);
       const resJSON = await res.json();
       console.log(resJSON);
-      this.setState({data: resJSON.Search});
+      this.setState({data: resJSON.Search, loading: false});
     }
 
    async handleSubmit(e){
@@ -40,6 +41,11 @@ class List extends React.Component{
     }
 
     render(){
+        const { data, loading} = this.state;
+        if(loading){
+            return <h3 className="text-light">Loading...</h3>
+        }
+
         return( 
             <Fragment>
                 <div className="row">
@@ -58,7 +64,7 @@ class List extends React.Component{
                 </div>
                 <div className="row">
                 {
-                    this.state.data.map((movie, index) => {
+                    data.map((movie, index) => {
                         return <Card movie={movie} key={index}/>
                     })
                 }
